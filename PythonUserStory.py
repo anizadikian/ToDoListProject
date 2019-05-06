@@ -5,8 +5,8 @@ dict = json.load(f)
 
     def new_task():
 
-        user_ask = input("what is your task?")
-        dict[int(len(dict.keys()) + 1)] = {user_ask: ""}
+        user_task = input("what is your task?")
+        dict[int(len(dict.keys()) + 1)] = {user_task: ""}
 
         user_deadline = input("what is the deadline:")
         dict[int(len(dict.keys()) + 1)] = {user_deadline: ""}
