@@ -1,57 +1,61 @@
-import json
+mport json
+
 print("This is your ToDo list helper. It will help you organize your tasks. Please fill in the information bellow")
-with open('my_dict.json') as f:
-dict = json.load(f)
+with open('DataJson.json') as f:
+    dict = json.load(f)
 
-    def new_task():
+def new_task():
+    user_task = input("what is your task?")
+    dict[int(len(dict.keys()) + 1)] = {user_task: ""}
 
-        user_task = input("what is your task?")
-        dict[int(len(dict.keys()) + 1)] = {user_task: ""}
+    user_deadline = input("what is the deadline:")
+    dict[int(len(dict.keys()) + 1)] = {user_deadline: ""}
 
-        user_deadline = input("what is the deadline:")
-        dict[int(len(dict.keys()) + 1)] = {user_deadline: ""}
+    user_time = input("what is the time:")
+    dict[int(len(dict.keys()) + 1)] = {user_time: ""}
 
-        user_time = input("what is the time:")
-        dict[int(len(dict.keys()) + 1)] = {user_time: ""}
+    y = {user_task: {user_deadline, user_time}}
 
-        with open('my_dict.json', 'w') as f:
-            json.dump(dict, f)
+    with open('DataJson.json', 'w') as f:
+        json.dump(y, f)
 
-        return new_task()
+    return new_task()
 
-    def task_modifaction():
 
-       with open('DataJson.json') as f:
-       dict = json.load(f)
+def task_modifaction():
+    with open('DataJson.json') as f:
+        dict = json.load(f)
 
-       print(dict)
-       print(dict.keys())
+    print(dict)
+    print(dict.keys())
 
-       question_name = input('name of the task ? ')
-       user_question = ""
-       for key in dict[question_name].keys():
-       user_question = key
-       break
-       print("The task is", user_question)
-       
+    question_name = input('name of the task ? ')
+    user_question = ""
+    for key in dict[question_name].keys():
+        user_question = key
+        break
+    print("The task is", user_question)
+
+
     user_answer = input("Please Insert your answer?")
     user_deadline = input("please input the new deadline")
     user_time = input("please input the new time")
-      dict[question_name] = {user_question: user_answer, user_deadline}
+    dict["question_name"] = {user_question:{ user_answer, user_deadline}}
 
     with open('DataJson.json', 'w') as f:
         json.dump(dict, f)
 
-       return task_modifaction()
+    return task_modifaction()
+
 
 def see_all_tasks():
     with open("DataJson.json") as data:
         data_dict = json.load(data)
+        print(data_dict)
+        # for object in DataJson.json:
+        #     print(object)
 
-        for object in DataJson.json:
-            print(object)
-
-    def main():
+def main():
 
     while True:
         print("Please choose number from the following:")
@@ -59,12 +63,13 @@ def see_all_tasks():
         print("2 : See previously added tasks")
         print("3 : Modify task")
 
-        user_input= int(input())
-
+        user_input = int(input())
 
         if user_input == 1:
 
             return new_task()
+                y   =   new_task()
+            
 
         elif user_input == 2:
 
@@ -72,10 +77,10 @@ def see_all_tasks():
 
         elif user_input == 3:
 
-        return task_modifaction()
+            return task_modifaction()
 
-        else :
-            print("Please type as required")
-            exit
-
+        else:
+            print("Please type as required, write normally bitch")
+new_task()
+see_all_tasks()
 main()
