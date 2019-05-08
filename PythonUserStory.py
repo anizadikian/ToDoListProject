@@ -1,4 +1,4 @@
-mport json
+import json
 
 print("This is your ToDo list helper. It will help you organize your tasks. Please fill in the information bellow")
 with open('DataJson.json') as f:
