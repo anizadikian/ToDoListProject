@@ -1,62 +1,69 @@
 import json
+import datetime
 
 print("This is your ToDo list helper. It will help you organize your tasks. Please fill in the information bellow")
-with open('DataJson.json') as f:
+with open('data.json') as f:
     dict = json.load(f)
 
-def new_task():
-    user_task = input("what is your task?")
-    dict[int(len(dict.keys()) + 1)] = {user_task: ""}
 
-    user_deadline = input("what is the deadline:")
-    dict[int(len(dict.keys()) + 1)] = {user_deadline: ""}
+def new_task(dict):
+    while True:
+        user_task = input("What is the task you need to accomplish?   ")
+        dict[int(len(dict.keys()) + 1)] = {user_task: ""}
+        if user_task.isalpha():
+            break
+        print("Please enter characters A-Z only")
+#is not working to validate the deadline
+    while True:
+        user_deadline = input("What is the deadline for the task mentioned? Please insert in the format MM/DD/YYYY:   ")
+        datetime.datetime.strptime(user_deadline, '%m/%d/%Y')
+        dict[int(len(dict.keys()) + 1)] = {user_deadline: ""}
+        if ValueError:
+            break
+        print("Date format should be MM/DD/YYYY")
 
-    user_time = input("what is the time:")
-    dict[int(len(dict.keys()) + 1)] = {user_time: ""}
+    while True:
+        user_time = input("What is the period of time you need to accomplish it?    ")
+        dict[int(len(dict.keys()) + 1)] = {user_time: ""}
+        if user_time.isdigit():
+            break
+        print("You must enter a number (i.e. 0,1,2...")
+
 
     y = {user_task: {user_deadline, user_time}}
 
-    with open('DataJson.json', 'w') as f:
-        json.dump(y, f)
+    with open('data.json', 'w') as f:
+        json.dump(dict, f)
 
-    return new_task()
-
-
-def task_modifaction():
-    with open('DataJson.json') as f:
-        dict = json.load(f)
-
+def task_modifaction(dict):
     print(dict)
     print(dict.keys())
 
-    question_name = input('name of the task ? ')
+    question_name = input("Please insert the name of the task you want to modify")
     user_question = ""
     for key in dict[question_name].keys():
         user_question = key
         break
     print("The task is", user_question)
 
+    while True:
+        user_answer = input("Please insert the new name of the task?")
+        if user_answer.isalpha():
+            break
+        print("Please enter characters A-Z only")
 
-    user_answer = input("Please Insert your answer?")
     user_deadline = input("please input the new deadline")
     user_time = input("please input the new time")
-    dict["question_name"] = {user_question:{ user_answer, user_deadline}}
+    dict["question_name"] = {user_question: {user_answer, user_deadline, user_time}}
 
     with open('DataJson.json', 'w') as f:
         json.dump(dict, f)
 
-    return task_modifaction()
 
-
-def see_all_tasks():
-    with open("DataJson.json") as data:
-        data_dict = json.load(data)
-        print(data_dict)
-        # for object in DataJson.json:
-        #     print(object)
+def see_all_tasks(dict):
+    print(dict)
 
 def main():
-
     while True:
         print("Please choose number from the following:")
         print("1 : Insert new task")
@@ -67,20 +74,19 @@ def main():
 
         if user_input == 1:
 
-            return new_task()
-                y   =   new_task()
-            
+            new_task(dict)
+
 
         elif user_input == 2:
 
-            return see_all_tasks()
+            see_all_tasks(dict)
+
 
         elif user_input == 3:
 
-            return task_modifaction()
+            task_modifaction(dict)
+
 
         else:
             print("Please type as required, write normally bitch")
-new_task()
-see_all_tasks()
 main()
