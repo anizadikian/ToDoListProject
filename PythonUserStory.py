@@ -88,5 +88,5 @@ def main():
 
 
         else:
-            print("Please type as required, write normally bitch")
+            print("Please type as required, inserting the number 1, 2 or 3")
 main()
