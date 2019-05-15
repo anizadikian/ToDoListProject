@@ -13,14 +13,15 @@ def new_task(dict):
         if user_task.isalpha():
             break
         print("Please enter characters A-Z only")
-#is not working to validate the deadline
+        
     while True:
         user_deadline = input("What is the deadline for the task mentioned? Please insert in the format MM/DD/YYYY:   ")
-        datetime.datetime.strptime(user_deadline, '%m/%d/%Y')
-        dict[int(len(dict.keys()) + 1)] = {user_deadline: ""}
-        if ValueError:
+        try:
+            user_deadline = datetime.datetime.strptime(user_deadline, '%m/%d/%Y')
+            dict[int(len(dict.keys()) + 1)] = {"Deadline": user_deadline}
             break
-        print("Date format should be MM/DD/YYYY")
+        except ValueError:
+            print("Date format should be MM/DD/YYYY")
 
     while True:
         user_time = input("What is the period of time you need to accomplish it?    ")
