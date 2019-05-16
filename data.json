@@ -1,7 +1,1 @@
-{
-  "tasks":[
-    {"bahsugsd": {"Deadline" : "23/04/19","Time" : "4"}},
-    {"adjhsifuh": {"Deadline" : "25/04/19", "Time" : "5"}},
-    {"ajsdhkjahd": {"Deadline": "26/04/19", "Time": "5"}}
-  ]
-}
+{"tasks": [{"Programming": {"Deadline": "05/17/2019", "Time": "5"}}, {"Mechanics": {"Deadline": "05/18/2019", "Time": "5"}}, {"Calculus": {"Deadline": "05/21/2019", "Time": "5"}}, {"Ethics": {"Deadline": "01/06/2019", "Time": "2"}}]}
