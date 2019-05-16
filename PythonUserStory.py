@@ -4,8 +4,8 @@ import datetime
 
 def new_task():
     with open('data.json') as f:
-        dicts_old = json.load(f)  # lets simple call this old dictionary.
-    dicts = {}  # the one which should be appended to the old on.
+        dicts_old = json.load(f)  
+    dicts = {}  .
     while True:
         user_task = input("What is the task you need to accomplish?   ")
         if user_task.isalpha():
@@ -38,9 +38,9 @@ def new_task():
 
 def task_modifaction():
     with open('data.json') as f:
-        dicts_old = json.load(f)  # lets simple call this old dictionary.
+        dicts_old = json.load(f)  
 
-    for i in dicts_old['tasks']:  # make a loop to print out our data
+    for i in dicts_old['tasks']:  
         task_name = next(iter(i.keys()))
         deadline = i[task_name]['Deadline']
         times = i[task_name]['Time']
@@ -59,10 +59,10 @@ def task_modifaction():
     user_deadline = input("please input the new deadline:    ")
     user_time = input("please input the new time:     ")
 
-    for i in range(len(dicts_old['tasks'])):  # finding the old record
+    for i in range(len(dicts_old['tasks'])):  
         if next(iter(dicts_old['tasks'][i].keys())) == question_name:
             dicts_old['tasks'][i] = {
-                user_answer: {'Deadline': user_deadline, 'Time': user_time}}  # replacing the old record
+                user_answer: {'Deadline': user_deadline, 'Time': user_time}}  
 
     with open('data.json', 'w') as f:
         json.dump(dicts_old, f)
@@ -70,8 +70,8 @@ def task_modifaction():
 
 def see_all_tasks():
     with open('data.json') as f:
-        dicts_old = json.load(f)  # lets simple call this old dictionary.
-    sorted_data = {}  # this is for sorting
+        dicts_old = json.load(f)  
+    sorted_data = {}  
     for i in dicts_old['tasks']:
         task_name = next(iter(i.keys()))
         deadline = i[task_name]['Deadline']
@@ -94,6 +94,7 @@ def main():
         print("1 : Insert new task")
         print("2 : See previously added tasks")
         print("3 : Modify task")
+        print("4 : Exit the application")
 
         user_input = int(input())
 
@@ -111,9 +112,12 @@ def main():
 
             task_modifaction()
 
+        elif user_input == 4:
+            print("Thank you for using the ToDo list helper, which helps you organize tasks")
+            exit()
 
         else:
-            print("Please type as required, inserting the number 1, 2 or 3")
+            print("Please type as required, inserting the number 1, 2, 3 or 4")
 
 
 main()
