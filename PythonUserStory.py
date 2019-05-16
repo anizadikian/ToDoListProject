@@ -4,8 +4,8 @@ import datetime
 
 def new_task():
     with open('data.json') as f:
-        dicts_old = json.load(f)  
-    dicts = {}  
+        dicts_old = json.load(f)  # lets simple call this old dictionary.
+    dicts = {}  # the one which should be appended to the old on.
     while True:
         user_task = input("What is the task you need to accomplish?   ")
         if user_task.isalpha():
@@ -27,7 +27,7 @@ def new_task():
         dicts[user_task]['Time'] = user_time
         if user_time.isdigit():
             break
-        print("You must enter a number (i.e. 0,1,2...)")
+        print("You must enter a number (i.e. 0,1,2...")
 
     dicts_old['tasks'].append(dicts)
     dicts_new = dicts_old
@@ -38,17 +38,17 @@ def new_task():
 
 def task_modifaction():
     with open('data.json') as f:
-        dicts_old = json.load(f)  
+        dicts_old = json.load(f)  # lets simple call this old dictionary.
 
-    for i in dicts_old['tasks']:
+    for i in dicts_old['tasks']:  # make a loop to print out our data
         task_name = next(iter(i.keys()))
         deadline = i[task_name]['Deadline']
         times = i[task_name]['Time']
-        print('Task is ', task_name, 'Deadline is ', deadline, 'The period of time', times)
+        print('Task is ', task_name, ', Deadline is ', deadline, ', The period of time you need to accomplish is', times)
 
-    question_name = input("Please insert the name of the task you want to modify")
+    question_name = input("Please insert the name of the task you want to modify:      ")
 
-    print("The task is", question_name)
+    print("The task is   ", question_name)
 
     while True:
         user_answer = input("Please insert the new name of the task?")
@@ -56,13 +56,13 @@ def task_modifaction():
             break
         print("Please enter characters A-Z only")
 
-    user_deadline = input("please input the new deadline")
-    user_time = input("please input the new time")
+    user_deadline = input("please input the new deadline:    ")
+    user_time = input("please input the new time:     ")
 
-    for i in range(len(dicts_old['tasks'])): 
+    for i in range(len(dicts_old['tasks'])):  # finding the old record
         if next(iter(dicts_old['tasks'][i].keys())) == question_name:
             dicts_old['tasks'][i] = {
-                user_answer: {'Deadline': user_deadline, 'Time': user_time}} 
+                user_answer: {'Deadline': user_deadline, 'Time': user_time}}  # replacing the old record
 
     with open('data.json', 'w') as f:
         json.dump(dicts_old, f)
