@@ -24,11 +24,9 @@ Resolution: User can insert the deadlines and set up reminders
 User need: User need to know how many days he has until the deadline
 Resolution: next to each deadline it appears the days left
 
-User need: User needs to set up priorities
-Resolution: When defining the tasks user can define the priorities
+User need: User needs to set up the time he needs to do the task
+Resolution: When defining the tasks user can define the time period
 
-User need: Divide the tasks into concluded or not
-Resolution: User can easily click on the button and transfer the task to the concluded tasks sections
 
 4. User stories
 
