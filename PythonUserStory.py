@@ -7,7 +7,7 @@ import datetime
 def new_task():
     with open('data.json') as f:
         dicts_old = json.load(f)  
-    dicts = {}  .
+    dicts = {}
     while True:
         user_task = input("What is the task you need to accomplish?   ")
         if user_task.isalpha():
