@@ -58,8 +58,8 @@ def task_modifaction():
             break
         print("Please enter characters A-Z only")
 
-    user_deadline = input("please input the new deadline:    ")
-    user_time = input("please input the new time:     ")
+    user_deadline = input("please input the new deadlinein the format MM/DD/YYYY:    ")
+    user_time = input("Please input the new time you need to accomplish the task:     ")
 
     for i in range(len(dicts_old['tasks'])):  
         if next(iter(dicts_old['tasks'][i].keys())) == question_name:
