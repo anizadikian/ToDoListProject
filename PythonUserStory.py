@@ -1,3 +1,5 @@
+print("This is your ToDo list helper. It will help you organize your tasks. Please fill in the information bellow")
+
 import json
 import datetime
 
@@ -88,8 +90,6 @@ def see_all_tasks():
 
 def main():
     while True:
-        print(
-            "This is your ToDo list helper. It will help you organize your tasks. Please fill in the information bellow")
         print("Please choose number from the following:")
         print("1 : Insert new task")
         print("2 : See previously added tasks")
